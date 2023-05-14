@@ -1,4 +1,5 @@
 package com.sepbf.backend.pojo;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -9,6 +10,7 @@ import java.sql.Date;
 @Data
 public class News {
 
+    @TableId
     private int news_id;
 
     private String title;

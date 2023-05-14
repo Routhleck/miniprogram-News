@@ -1,4 +1,5 @@
 package com.sepbf.backend.pojo;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -6,6 +7,7 @@ import lombok.Data;
 @Data
 public class User {
 
+    @TableId
     private int user_id;
 
     private int phone_number;
