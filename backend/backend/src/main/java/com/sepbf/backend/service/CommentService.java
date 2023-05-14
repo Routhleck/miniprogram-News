@@ -12,4 +12,10 @@ public interface CommentService extends IService<Comment> {
 
     boolean addComment(Comment comment);
 
+    boolean deleteComment(Comment comment);
+
+    boolean updateComment(Comment comment);
+
+    Comment getCommentById(Integer id);
+
 }

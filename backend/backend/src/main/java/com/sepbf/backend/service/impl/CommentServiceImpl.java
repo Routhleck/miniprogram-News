@@ -22,12 +22,26 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
     @Override
     public boolean addComment(Comment comment) {
         int result = commentMapper.insert(comment);
-        if (result ==0){
-            return true;
-        }else {
-            return false;
-        }
+        return result == 0;
     }
+
+    @Override
+    public boolean deleteComment(Comment comment) {
+        int result = commentMapper.delete(comment);
+        return result == 0;
+    }
+
+    @Override
+    public boolean updateComment(Comment comment) {
+        int result = commentMapper.updateById(comment);
+        return result == 0;
+    }
+
+    @Override
+    public Comment getCommentById(Integer id) {
+        return commentMapper.selectById(id);
+    }
+
 
 
 }
