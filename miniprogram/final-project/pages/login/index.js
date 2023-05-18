@@ -73,7 +73,7 @@ Page({
     if(this.data.current == 1){
       const loginFormJson = JSON.stringify(this.data.loginForm)
       wx.request({
-        url: '192.168.25.29:8888/user/login',
+        url: 'http://127.0.0.1:8888/user/login',
         method: 'POST',
         data: loginFormJson,
         success: function(res){
