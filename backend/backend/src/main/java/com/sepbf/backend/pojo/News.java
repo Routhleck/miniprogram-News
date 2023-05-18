@@ -21,16 +21,16 @@ public class News {
 
     private String text;
 
-    private int favorite_num;
+    private int favourite_num;
 
     //构造函数
-    public News(int news_id, String title, String author, Date time, String text, int favorite_num) {
+    public News(int news_id, String title, String author, Date time, String text, int favourite_num) {
         this.news_id = news_id;
         this.title = title;
         this.author = author;
         this.time = time;
         this.text = text;
-        this.favorite_num = favorite_num;
+        this.favourite_num = favourite_num;
     }
 
 

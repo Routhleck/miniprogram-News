@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sepbf.backend.mapper.UserMapper;
 import com.sepbf.backend.pojo.User;
 import com.sepbf.backend.service.UserService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
@@ -12,10 +13,11 @@ import javax.annotation.Resource;
  * @version 1.0
  * @date 2023/5/14 16:22
  */
+@Service("userService")
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     @Resource
-    UserMapper userMapper;
+    private UserMapper userMapper;
 
     @Override
     public boolean addUser(User user) {
@@ -38,6 +40,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public User getUserById(Integer id) {
         return userMapper.selectById(id);
+    }
+
+    @Override
+    public User getUserByPhone(String phoneNum) {
+        return userMapper.selectByPhone(phoneNum);
     }
 
 

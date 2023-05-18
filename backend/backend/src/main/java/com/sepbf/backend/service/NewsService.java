@@ -3,6 +3,8 @@ package com.sepbf.backend.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.sepbf.backend.pojo.News;
 
+import java.util.List;
+
 /**
  * @author HeYi
  * @version 1.0
@@ -18,4 +20,7 @@ public interface NewsService extends IService<News> {
 
         News getNewsById(Integer id);
 
+        List<News> getAllNews();
+
+        List<News> getFavoriteNewsByUserId(int userId);
 }
