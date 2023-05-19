@@ -28,15 +28,17 @@
   <view class="input-box" hidden="{{current==1}}">
     <view class="wei-input">
       <icon type="waiting" color="#44ADFB" size="16"></icon>
-      <input class="input" bindblur="loginForm_phone_num_blur" bindinput="registerForm_phone_num_change" value="{{ registerForm.phone_num }}" auto-focus placeholder="请输入手机号"/>
+      <input class="input" bindblur="loginForm_phone_num_blur" bindinput="registerForm_phone_num_change" 
+      value="{{ registerForm.phone_num }}" auto-focus placeholder="请输入手机号"/>
     </view>
     <view class="wei-input">
       <icon type="success" color="#44ADFB" size="16"></icon>
-      <input class="input" bindinput="registerForm_password_change" auto-focus placeholder="请输入密码"/>
+      <input class="input" bindinput="registerForm_password_change" 
+      auto-focus value="{{ registerForm.password }}" placeholder="请输入密码"/>
     </view>
     <view class="wei-input">
       <icon type="success" color="#44ADFB" size="16"></icon>
-      <input class="input" bindinput="registerForm_check_password_change" auto-focus placeholder="请确认密码"/>
+      <input class="input" bindinput="registerForm_check_password_change" value="{{ check_password }}" auto-focus placeholder="请确认密码"/>
     </view>
   </view>
   <view class="sumbit-btn">

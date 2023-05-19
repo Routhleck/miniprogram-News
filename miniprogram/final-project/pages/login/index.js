@@ -1,6 +1,7 @@
 // index.js
 // 获取应用实例
 const app = getApp()
+const Url = app.globalData.Url;
 
 Page({
 
@@ -16,9 +17,9 @@ Page({
     },
     registerForm:{
       phone_num:"",
-      password:"",
-      check_password:""
+      password:""
     },
+    check_password:""
   },
   // 登陆注册监听
   click(e){
@@ -65,7 +66,7 @@ Page({
     //处理注册表单确认密码修改事件
     registerForm_check_password_change:function(e){
       this.setData({
-        'registerForm.check_password': e.detail.value // 更新输入框的值
+        'check_password': e.detail.value // 更新输入框的值
       });
     },
   //处理点击登录注册按钮事件
@@ -73,18 +74,52 @@ Page({
     if(this.data.current == 1){
       const loginFormJson = JSON.stringify(this.data.loginForm)
       wx.request({
-        url: 'http://127.0.0.1:8888/user/login',
+        url: Url + '/user/login',
         method: 'POST',
         data: loginFormJson,
         success: function(res){
           console.log(res.data); // 打印请求成功后的响应数据
+          if(res.data == true){
+            wx.navigateTo({
+              url: '/pages/main/index'
+            })
+          }
         },
         fail: function(err){
           console.error(err); // 打印请求失败的错误信息
         }
       })
     }else{
-      console.log(this.data.current)
+      if(this.data.registerForm.password == this.data.check_password){
+        const registerFormJson = JSON.stringify(this.data.registerForm)
+      wx.request({
+        url: Url + '/user/register',
+        method: 'POST',
+        data: registerFormJson,
+        success:function(res){
+          console.log(res.data); // 打印请求成功后的响应数据
+          wx.showToast({
+            title: '注册成功',
+            icon: 'success',
+            duration: 2000,
+          });
+        },
+        fail:function(err){
+          console.error(err); // 打印请求失败的错误信息
+        }
+      })
+      }else{
+        wx.showToast({
+          title: '两次输入的密码不一致',
+          icon: 'none',
+          duration:2000
+        });
+
+        this.setData({
+          'registerForm.password':'',
+          'check_password':''
+        })
+      }
     }
   },
   /**
