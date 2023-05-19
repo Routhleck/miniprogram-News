@@ -33,7 +33,7 @@ public class UserController {
 
     @PostMapping("/register")
     public boolean register(@RequestBody Map<String, Object> map) {
-        Long phone_num = (Long) map.get("phone_num");
+        String phone_num = String.valueOf(map.get("phone_num"));
         String password = (String) map.get("password");
 
         String phone_num_str = String.valueOf(phone_num); // 转换为字符串
