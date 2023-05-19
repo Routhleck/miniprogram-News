@@ -80,6 +80,11 @@ Page({
         success: function(res){
           console.log(res.data); // 打印请求成功后的响应数据
           if(res.data == true){
+            wx.showToast({
+              title: '登录成功',
+              icon: 'success',
+              duration: 2000,
+            });
             wx.navigateTo({
               url: '/pages/main/index'
             })

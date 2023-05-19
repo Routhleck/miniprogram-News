@@ -1,66 +1,65 @@
-// pages/main/index.js
+// index.js
+// 获取应用实例
+
+const app = getApp()
+const Url = app.globalData.Url;
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
+  // 数据绑定
   data: {
+    news_id:"",
+    newForm:[]
+  },
+  // 自定义变量
+  imgPath: "/images/...",
+
+  // 自定义方法
+  process: function() {
 
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  jump: function (event) {
+    this.setData({
+      news_id: event.currentTarget.dataset.flag// 更新输入框的值
+    });
+    wx.navigateTo({
+      url: '../context/context?news_id=' + JSON.stringify(this.data.news_id)
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  myNews:function(){
+    wx.request({
+      url: Url + '/news/getAllNews',
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: (res) => {
+ // 打印请求成功后的响应数据
+        this.setData({
+          newForm:res.data// 更新输入框的值
+        });
+        console.log(this.data.newForm);
+      },
+      fail: function(err){
+        console.error(err); // 打印请求失败的错误信息
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
+  onReady: function() {
+    // 页面渲染完成
+    this.myNews();
+    console.log('onReady');
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
+  onShow: function() {
+    // 页面显示
+    console.log('onShow');
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
+  onHide: function() {
+    // 页面隐藏
+    console.log('onHide');
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  onUnload: function() {
+    // 页面关闭
+    console.log('onUnload');
   }
 })
+
+

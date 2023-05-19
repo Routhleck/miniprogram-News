@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/login/index",
-    "pages/main/index"
+    "pages/main/index",
+    "pages/context/context"
   ],
   "window": {
     "backgroundTextStyle": "light",
