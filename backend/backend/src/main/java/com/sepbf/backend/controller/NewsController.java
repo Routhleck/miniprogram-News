@@ -33,19 +33,20 @@ public class NewsController {
         return resultList;
     }
 
-    @GetMapping("/getNewsById")
+    @PostMapping("/getNewsById")
     public Map<String, Object> getNewsById(@RequestBody Map<String, Object> map) {
-        int newsId = (int) map.get("news_id");
-        News news = newsService.getNewsById(newsId);
+            int newsId = Integer.parseInt((String) map.get("news_id"));
+            News news = newsService.getNewsById(newsId);
 
-        Map<String, Object> resultMap = new HashMap<>();
-        resultMap.put("news_id", news.getNews_id());
-        resultMap.put("title", news.getTitle());
-        resultMap.put("author", news.getAuthor());
-        resultMap.put("time", news.getTime());
-        resultMap.put("text", news.getText());
-        resultMap.put("favorite_num", news.getFavourite_num());
+            Map<String, Object> resultMap = new HashMap<>();
+            resultMap.put("news_id", news.getNews_id());
+            resultMap.put("title", news.getTitle());
+            resultMap.put("author", news.getAuthor());
+            resultMap.put("time", news.getTime());
+            resultMap.put("text", news.getText());
+            resultMap.put("favorite_num", news.getFavourite_num());
 
-        return resultMap;
+            return resultMap;
     }
+
 }
