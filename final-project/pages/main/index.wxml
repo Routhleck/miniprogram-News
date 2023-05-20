@@ -1,0 +1,37 @@
+<view >
+  <swiper  indicator-dots='true' autoplay='true' interval='5000' circular="true">
+    <swiper-item>
+      <image src='/images/01.jpg'  bindtap="jump"></image>
+      <view class="child" bindtap="jump">
+      "习近平和彭丽媛为出席中国－中亚峰会的中亚国家元首夫妇举行欢迎仪式和欢迎宴会并共同观看演出"
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <image src='/images/02.jpg'  bindtap="jump"></image>
+      <view class="child" bindtap="jump">
+      "【中国旅游日特刊】这些小众的旅游地你知道几个？打卡不一样的美景"
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <image src='/images/03.jpg'  bindtap="jump"></image>
+      <view class="child"  bindtap="jump">
+      "贾湖遗址博物馆“亮相” 骨笛等逾400件文物集中展出"
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <image src='/images/05.jpg'  bindtap="jump"></image>
+      <view class="child"  bindtap="jump">
+      "美国债务危机谈判紧张，白登决定缩短出国行程"
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <view style="border:solid 1px; position:relative;height: 1000px;background-image: linear-gradient(#5ed6fd, #44ADFB);">
+    <view wx:for = "{{newForm}}" wx:key = 'news_id' style="border:solid 1px; position:relative; height : 50px;" >
+      <swiper-item>
+        <text bindtap="jump" data-flag="{{item.news_id}}">{{item.title}}</text>
+      </swiper-item>
+    </view>
+  </view>
+</view>
+

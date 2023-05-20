@@ -1,0 +1,14 @@
+<!--context.wxml-->
+<view class="container" style="border:solid 1px;height:1000px;background-image: linear-gradient(#5ed6fd, #44ADFB);">
+     <view class="item">
+     <text >{{getFrom.title}}
+      {{getFrom.author}}</text>
+      <text>
+      {{getFrom.text}}</text>
+      </view>
+      <view class="item" bindtap="haveSave">
+       <image class="save " style="align-items: flex-start; height: 50px; width: 50px;" 
+       src="{{isClick?'/images/07.jpg':'/images/06 .jpg'}}" ></image>
+    <text class="saveText">{{isClick?'取消':'收藏'}}   {{getFrom.favorite_num}}</text>
+       </view>
+  </view>
