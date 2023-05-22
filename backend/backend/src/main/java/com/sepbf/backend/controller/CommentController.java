@@ -44,8 +44,10 @@ public class CommentController {
         int news_id=(int)map.get("news_id");
         int user_id=(int)map.get("user_id");
         Date date=(Date)map.get("time");
+        
 
         Comment new_comment= new Comment(news_id,user_id,date,text);
+        commentService.addComment(new_comment);
         return true;} catch (Exception e) {
             e.printStackTrace();
             return false;
