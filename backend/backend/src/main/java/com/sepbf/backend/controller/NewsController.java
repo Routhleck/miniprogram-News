@@ -1,6 +1,8 @@
 package com.sepbf.backend.controller;
 
+import com.sepbf.backend.pojo.Comment;
 import com.sepbf.backend.pojo.News;
+import com.sepbf.backend.service.CommentService;
 import com.sepbf.backend.service.NewsService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,8 @@ import java.util.Map;
 @RequestMapping("/news")
 public class NewsController {
 
+    @Resource
+    private CommentService commentService;
     @Resource
     private NewsService newsService;
 
@@ -48,5 +52,7 @@ public class NewsController {
 
             return resultMap;
     }
+
+
 
 }

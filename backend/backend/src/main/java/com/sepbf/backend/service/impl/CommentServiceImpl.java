@@ -3,10 +3,13 @@ package com.sepbf.backend.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sepbf.backend.mapper.CommentMapper;
 import com.sepbf.backend.pojo.Comment;
+import com.sepbf.backend.pojo.News;
 import com.sepbf.backend.service.CommentService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author HeYi
@@ -38,9 +41,10 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
     }
 
     @Override
-    public Comment getCommentById(Integer id) {
-        return commentMapper.selectById(id);
+    public List<Comment> getComment(Integer id) {
+        return commentMapper.getCommentByNewsId(id);
     }
+
 
 
 

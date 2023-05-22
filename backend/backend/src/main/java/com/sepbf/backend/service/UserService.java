@@ -21,4 +21,5 @@ public interface UserService extends IService<User> {
     User getUserById(Integer id);
 
     User getUserByPhone(String phoneNum);
+
 }
