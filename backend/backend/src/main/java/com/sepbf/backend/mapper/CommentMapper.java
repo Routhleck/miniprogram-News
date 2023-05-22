@@ -18,7 +18,7 @@ public interface CommentMapper extends BaseMapper<Comment> {
     int delete(Comment comment);
 
     @Select("SELECT * FROM comment WHERE news_id=#{news_id}")
-    List<Comment> getCommentByNewsId(Integer id);
+    List<Comment> getCommentByNewsId(int id);
 
 
 }

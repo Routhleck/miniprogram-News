@@ -18,5 +18,5 @@ public interface CommentService extends IService<Comment> {
 
     boolean updateComment(Comment comment);
 
-    List<Comment> getComment(Integer id);
+    List<Comment> getComment(int id);
 }

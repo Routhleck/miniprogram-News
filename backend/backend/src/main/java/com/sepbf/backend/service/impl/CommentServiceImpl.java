@@ -41,10 +41,9 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
     }
 
     @Override
-    public List<Comment> getComment(Integer id) {
+    public List<Comment> getComment(int id) {
         return commentMapper.getCommentByNewsId(id);
     }
-
 
 
 

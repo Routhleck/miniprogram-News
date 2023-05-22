@@ -6,6 +6,7 @@ package com.sepbf.backend.controller;/*
 
 import com.sepbf.backend.pojo.Comment;
 import com.sepbf.backend.pojo.User;
+import java.time.LocalDate;
 import com.sepbf.backend.service.CommentService;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +25,7 @@ public class CommentController {
     @PostMapping("/getComment")
     public List<Map<String,Object>> getComment(@RequestBody Map<String, Object> map) {
         int news_id=(int)map.get("news_id");
+        System.out.println(news_id+"have been received");
 
         List<Comment> commentList=commentService.getComment(news_id);
         List<Map<String, Object>> resultList = new ArrayList<>();
@@ -43,11 +45,15 @@ public class CommentController {
         String text =(String) map.get("text");
         int news_id=(int)map.get("news_id");
         int user_id=(int)map.get("user_id");
-        Date date=(Date)map.get("time");
-        
 
-        Comment new_comment= new Comment(news_id,user_id,date,text);
+        String timeStr = (String) map.get("time");
+        LocalDate localDate = LocalDate.parse(timeStr);
+        Date date = Date.valueOf(localDate);
+
+
+            Comment new_comment= new Comment(news_id,user_id,date,text);
         commentService.addComment(new_comment);
+
         return true;} catch (Exception e) {
             e.printStackTrace();
             return false;
