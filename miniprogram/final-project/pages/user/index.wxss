@@ -1,0 +1,24 @@
+/* pages/user/index.wxss */
+.header {
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+}
+
+.favorite-list {
+  margin-top: 20px;
+}
+
+.favorite-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.favorite-title {
+  font-size: 18px;
+}
+
+.favorite-author {
+  font-size: 14px;
+  color: #888;
+}

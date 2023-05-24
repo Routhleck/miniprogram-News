@@ -85,7 +85,7 @@ Page({
               icon: 'success',
               duration: 2000,
             });
-            wx.navigateTo({
+            wx.switchTab({
               url: '/pages/main/index'
             })
           }

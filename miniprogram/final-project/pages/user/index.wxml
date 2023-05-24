@@ -1,0 +1,12 @@
+<!--pages/user/index.wxml-->
+<view>
+  <view class="header">我的收藏</view>
+  <view class="favorite-list">
+    <block wx:for="{{favorites}}" wx:key="id">
+      <view class="favorite-item">
+        <view class="favorite-title">{{item.title}}</view>
+        <view class="favorite-author">{{item.author}}</view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -22,7 +22,7 @@ Page({
       news_id: event.currentTarget.dataset.flag// 更新输入框的值
     });
     wx.navigateTo({
-      url: '../context/context?news_id=' + JSON.stringify(this.data.news_id)
+      url: '../context/index?news_id=' + JSON.stringify(this.data.news_id)
     })
   },
   myNews:function(){
