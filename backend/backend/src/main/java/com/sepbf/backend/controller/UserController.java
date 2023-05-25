@@ -52,6 +52,9 @@ public class UserController {
         } else {
             // 自动生成独一无二的ID
             int uniqueId = generateUniqueId();
+            if (uniqueId < 0) {
+                uniqueId = -uniqueId;
+            }
             User newUser = new User(uniqueId, phone_num_str, password);
             userService.addUser(newUser);
             return true; // 注册成功
