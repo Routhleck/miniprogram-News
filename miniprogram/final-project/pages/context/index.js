@@ -7,6 +7,9 @@ const Url = app.globalData.Url;
 Page({
   // 数据绑定
   data: {
+    placeholder: '说点什么...', //底部输入框占字符,
+    comment_text: null, //底部评论框内容,
+    focus: false, //输入框是否聚焦,
     job:[],
     jobList:[],
     id:'',
@@ -15,6 +18,12 @@ Page({
     jobId:'',
     newForm:{
       news_id:"",
+    },
+    comtentFrom:{
+      text:"",
+      news_id:"",
+      user_id:"",
+      time:""
     }
   },
   imgPath: "/images/...",
@@ -22,7 +31,48 @@ Page({
     var text = this.data.getFrom.title;
   },
   onLoad(options){
-    this.data.newForm.news_id = options.news_id // 更新输入框的值
+    this.data.newForm.news_id = options.news_id //更新输入框的值
+    console.log(this.data.newForm);
+    wx.request({
+      url: Url + '/news/getNewsById',
+      method: 'POST',
+      data:this.data.newForm,
+      dataType: 'json',
+      responseType: 'text',
+      success: (res) => {
+ // 打印请求成功后的响应数据
+        this.setData({
+          getFrom:res.data// 更新输入框的值
+        });
+        console.log(this.data.getFrom);
+      },
+      fail: function(err){
+        console.error(err); // 打印请求失败的错误信息
+      }
+    }),
+    wx.request({
+      url: Url + '/getComment',
+      method: 'POST',
+      data:this.data.newForm,
+      dataType: 'json',
+      responseType: 'text',
+      success: (res) => {
+ // 打印请求成功后的响应数据
+        this.setData({
+          getFroms:res.data// 更新输入框的值
+        });
+        console.log(this.data.getFroms);
+      },
+      fail: function(err){
+        console.error(err); // 打印请求失败的错误信息
+      }
+    })
+
+  },
+  //收藏
+  confirm(e){
+    var text= e.detail.value;
+    this.data.newForm.news_id = options.news_id //更新输入框的值
     console.log(this.data.newForm);
     wx.request({
       url: Url + '/news/getNewsById',
@@ -42,7 +92,6 @@ Page({
       }
     })
   },
-  //收藏
   haveSave(e){
     if(!this.data.isClick == true){
       let jobData = this.data.jobStorage;
@@ -74,7 +123,7 @@ Page({
   onHide: function() {
     // 页面隐藏
     console.log('onHide');
-  },
+  }, 
   onUnload: function() {
     // 页面关闭
     console.log('onUnload');

@@ -11,8 +11,19 @@
   width: 750rpx;
   align-self: flex-start;
 }
-.container view:nth-of-type(2){
-  width: 100rpx;
-  height: 100rpx;
-  align-self: flex-end;
+.foot{  
+  width: 686rpx;  padding: 17rpx 32rpx;  background-color: #FFFFFF;  box-shadow:0rpx -1rpx 4rpx 0rpx rgba(0, 0, 0, 0.08);  position: fixed;  bottom: 0;  left: 0;
 }
+
+.say{ 
+   display: inline-block;  width: 686rpx;  padding: 20rpx 0rpx 10rpx 24rpx;  background-color: #F2F2F2;  border-radius: 8rpx
+  }
+
+.flex{ 
+   display: flex;  align-items: center;
+  }
+
+.say_inp{  
+  display: inline-block;  width: 300rpx;  height: 33rpx;
+}
+

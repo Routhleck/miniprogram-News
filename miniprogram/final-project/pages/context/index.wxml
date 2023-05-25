@@ -1,14 +1,44 @@
 <!--index.wxml-->
-<view class="container" style="border:solid 1px;height:1000px;background-image: linear-gradient(#5ed6fd, #44ADFB);">
-     <view class="item">
-     <text >{{getFrom.title}}
-      {{getFrom.author}}</text>
-      <text>
-      {{getFrom.text}}</text>
+<view class="container" style="border:solid 1px;background-image: linear-gradient(#5ed6fd, #44ADFB); height: 1000px;position: relative;">
+      <view class="item">
+        <text >{{getFrom.title}}
+           {{getFrom.author}}</text>
+        <text>
+          {{getFrom.text}}</text>
       </view>
       <view class="item" bindtap="haveSave">
-       <image class="save " style="align-items: flex-start; height: 50px; width: 50px;" 
-       src="{{isClick?'/images/07.jpg':'/images/06 .jpg'}}" ></image>
-    <text class="saveText">{{isClick?'取消':'收藏'}}   {{getFrom.favorite_num}}</text>
-       </view>
+       <image class="save " style="align-items: flex-end; height: 50px; width: 50px;" 
+       src="{{isClick?'/images/07.jpg':'/images/06 .jpg'}}"></image>
+        <text class="saveText">{{isClick?'取消':'收藏'}}
+        {{getFrom.favorite_num}}</text>
+        <view wx:for = "{{getFroms}}" wx:key = 'time' style="align-items: flex-end;width: 320px;border: 3rpx solid white;">
+         <text style="align-items: flex-start;left: 0px;">
+          {{item.text}}
+         </text>
+         <text style="align-items: flex-start;left: 0px;">
+          {{item.time}}
+         </text>
+      </view>
+      </view>     
   </view>
+<view class="njx_container">
+  <view style="padding-bottom: {{paddingBottom}}px;" id="scrollNjx">
+    <view class="njx_card" wx:for="{{list}}" wx:key="id" id="id-{{item.id}}" bindtap="toComment" data-item="{{item}}" style="margin-bottom: {{index === list.length - 1 ? textHeight : 20}}px;">
+      {{item.id}}
+    </view>
+  </view>
+</view>
+
+<view class="comment-view" id="njxCommentTextarea" style="bottom: {{textBottom}}px;opacity: {{textOpacity}};">
+  <textarea class="textarea" style="margin-right: {{isIos ? 0 : 10}}px;padding: {{isIos ? '0 10px' : '4px 10px'}};" value="{{inputValue}}" placeholder="{{placeholder}}" placeholder-class="textarea-placeholder" focus="{{focus}}" auto-height fixed adjust-position="{{false}}" cursor-spacing="10" show-confirm-bar="{{false}}" confirm-type="send" bindkeyboardheightchange="getKeyBoardHeight" bindblur="onBlur"></textarea>
+  <view class="njx_button" wx:if="{{!isIos}}">发送</view>
+
+  <view class="foot">
+    <view class="say">
+      <view class="flex">
+        <input confirm-type="send" class="say_inp" placeholder="{{ placeholder }}" value="{{ comment_text }}" focus="{{ focus }}" bindblur="blur" bindconfirm="confirm"></input>
+      </view>
+    </view>
+  </view>  
+</view>
+
