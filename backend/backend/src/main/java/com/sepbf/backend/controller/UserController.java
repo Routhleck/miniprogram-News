@@ -20,14 +20,22 @@ public class UserController {
     @Resource
     private NewsService newsService;
 
+
     @PostMapping("/login")
-    public boolean login(@RequestBody Map<String, Object> map) {
+    public String login(@RequestBody Map<String, Object> map) {
         String phone_num = String.valueOf(map.get("phone_num"));
         String password = (String) map.get("password");
 
         User user = userService.getUserByPhone(phone_num);
-        // 登录失败
-        return user != null && user.getPassword().equals(password); // 登录成功
+
+        //如果用户存在且密码正确
+        if (user != null && user.getPassword().equals(password)) {
+            // 返回用户ID
+            return String.valueOf(user.getUser_id());
+
+        } else {
+            return "false";
+        }
     }
 
 
