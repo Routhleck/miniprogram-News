@@ -7,10 +7,9 @@
           {{getFrom.text}}</text>
       </view>
       <view class="item" bindtap="haveSave">
-       <image class="save " style="align-items: flex-end; height: 50px; width: 50px;" 
-       src="{{isClick?'/images/07.jpg':'/images/06 .jpg'}}"></image>
-        <text class="saveText">{{isClick?'取消':'收藏'}}
-        {{getFrom.favorite_num}}</text>
+       <image class="save" style="align-items: flex-end; height: 50px; width: 50px;"  
+       src="/images/07.jpg" bindtap="myfavort"></image>
+        <text class="saveText">'收藏'</text>
         <view wx:for = "{{getFroms}}" wx:key = 'time' style="align-items: flex-end;width: 320px;border: 3rpx solid white;">
          <text style="align-items: flex-start;left: 0px;">
           {{item.text}}

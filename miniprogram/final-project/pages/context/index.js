@@ -19,11 +19,18 @@ Page({
     newForm:{
       news_id:"",
     },
+    userLike:{
+      news_id:"",
+    },
     comtentFrom:{
       text:"",
       news_id:1,
       user_id:1,
       time:""
+    },
+    myfavortFrom:{
+      news_id:"",
+      user_id:""
     }
   },
   imgPath: "/images/...",
@@ -33,6 +40,7 @@ Page({
   onLoad(options){
     this.data.newForm.news_id = options.news_id;
     this.data.comtentFrom.news_id = parseInt(options.news_id);
+    this.data.myfavortFrom.news_id = parseInt(options.news_id);
     var app = getApp();
     this.data.comtentFrom.user_id= parseInt(app.globalData.user_id);
     console.log(this.data.newForm);
@@ -72,10 +80,28 @@ Page({
     })
 
   },
-  //收藏
+  myfavort(){
+      var app = getApp();
+      this.data.myfavortFrom.user_id = app.globalData.user_id;
+      console.log(this.data.myfavortFrom);
+      wx.request({
+        url: Url + '/favourite/addFavourite',
+        method: 'POST',
+        data:this.data.myfavortFrom,
+        dataType: 'json',
+        responseType: 'text',
+        success: (res) => {
+          console.log(this.data.getFrom);
+        },
+        fail: function(err){
+          console.error(err); // 打印请求失败的错误信息
+        }
+      })
+  },
   confirm(e){
     this.data.comtentFrom.text= e.detail.value;
-    var timestamp = Date.parse(new Date());var date = new Date(timestamp);//获取年份
+    var timestamp = Date.parse(new Date());
+    var date = new Date(timestamp);//获取年份
     var Y =date.getFullYear();//获取月份
     var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);//获取当日日期 
     var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
@@ -96,7 +122,6 @@ Page({
     })
   },
   haveSave(e){
-    if(!this.data.isClick == true){
       let jobData = this.data.jobStorage;
       jobData.push({
         jobid:jobData.length,
@@ -106,14 +131,6 @@ Page({
       wx.showToast({
         title: '已收藏',
       });
-    }else{
-      wx.showToast({
-        title: '已取消收藏',
-      })
-    }
-    this.setData({
-      isClick:!this.data.isClick
-    })
   },
   onReady: function() {
     // 页面渲染完成
