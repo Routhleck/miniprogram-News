@@ -18,6 +18,10 @@ public interface NewsService extends IService<News> {
 
         boolean updateNews(News news);
 
+        boolean deleteFavouritenum(int new_id);
+
+        boolean addFavouritenum(int new_id);
+
         News getNewsById(Integer id);
 
         List<News> getAllNews();

@@ -16,6 +16,8 @@ public class Favourite {
 
     private int user_id;
 
+
+
     // 构造函数
     public Favourite(int news_id, int user_id) {
         this.news_id = news_id;

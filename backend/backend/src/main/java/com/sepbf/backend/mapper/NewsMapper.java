@@ -1,9 +1,11 @@
 package com.sepbf.backend.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.sepbf.backend.pojo.Favourite;
 import com.sepbf.backend.pojo.News;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -24,6 +26,13 @@ public interface NewsMapper extends BaseMapper<News> {
             "INNER JOIN favourite f ON n.news_id = f.news_id " +
             "WHERE f.user_id = #{userId}")
     List<News> getFavoriteNewsByUserId(int userId);
+
+    //
+    @Update("UPDATE news SET favourite_num = favourite_num+1 WHERE news_id = #{news_id} ")
+    boolean addFavourite(Favourite favourite);
+
+    @Update("UPDATE news SET favourite_num = favourite_num-1 WHERE news_id = #{news_id} ")
+    boolean deleteFavourite(Favourite favourite);
 
 
 }
