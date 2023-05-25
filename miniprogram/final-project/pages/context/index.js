@@ -21,8 +21,8 @@ Page({
     },
     comtentFrom:{
       text:"",
-      news_id:"",
-      user_id:"",
+      news_id:1,
+      user_id:1,
       time:""
     }
   },
@@ -31,7 +31,10 @@ Page({
     var text = this.data.getFrom.title;
   },
   onLoad(options){
-    this.data.newForm.news_id = options.news_id //更新输入框的值
+    this.data.newForm.news_id = options.news_id;
+    this.data.comtentFrom.news_id = parseInt(options.news_id);
+    var app = getApp();
+    this.data.comtentFrom.user_id= parseInt(app.globalData.user_id);
     console.log(this.data.newForm);
     wx.request({
       url: Url + '/news/getNewsById',
@@ -71,20 +74,20 @@ Page({
   },
   //收藏
   confirm(e){
-    var text= e.detail.value;
-    this.data.newForm.news_id = options.news_id //更新输入框的值
-    console.log(this.data.newForm);
+    this.data.comtentFrom.text= e.detail.value;
+    var timestamp = Date.parse(new Date());var date = new Date(timestamp);//获取年份
+    var Y =date.getFullYear();//获取月份
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);//获取当日日期 
+    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    this.data.comtentFrom.time= Y+"-"+M+"-"+D //更新输入框的值
+    console.log(this.data.comtentFrom);
     wx.request({
-      url: Url + '/news/getNewsById',
+      url: Url + '/addComment',
       method: 'POST',
-      data:this.data.newForm,
+      data:this.data.comtentFrom,
       dataType: 'json',
       responseType: 'text',
       success: (res) => {
- // 打印请求成功后的响应数据
-        this.setData({
-          getFrom:res.data// 更新输入框的值
-        });
         console.log(this.data.getFrom);
       },
       fail: function(err){

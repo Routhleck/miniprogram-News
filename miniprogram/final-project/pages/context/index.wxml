@@ -28,7 +28,6 @@
     </view>
   </view>
 </view>
-
 <view class="comment-view" id="njxCommentTextarea" style="bottom: {{textBottom}}px;opacity: {{textOpacity}};">
   <textarea class="textarea" style="margin-right: {{isIos ? 0 : 10}}px;padding: {{isIos ? '0 10px' : '4px 10px'}};" value="{{inputValue}}" placeholder="{{placeholder}}" placeholder-class="textarea-placeholder" focus="{{focus}}" auto-height fixed adjust-position="{{false}}" cursor-spacing="10" show-confirm-bar="{{false}}" confirm-type="send" bindkeyboardheightchange="getKeyBoardHeight" bindblur="onBlur"></textarea>
   <view class="njx_button" wx:if="{{!isIos}}">发送</view>
@@ -36,7 +35,7 @@
   <view class="foot">
     <view class="say">
       <view class="flex">
-        <input confirm-type="send" class="say_inp" placeholder="{{ placeholder }}" value="{{ comment_text }}" focus="{{ focus }}" bindblur="blur" bindconfirm="confirm"></input>
+        <input confirm-type="send" class="say_inp" placeholder="{{ placeholder }}" value="{{ comment_text }}" focus="{{ focus }}" bindconfirm="confirm"></input>
       </view>
     </view>
   </view>  

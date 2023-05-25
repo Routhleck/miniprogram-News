@@ -79,7 +79,9 @@ Page({
         data: loginFormJson,
         success: function(res){
           console.log(res.data); // 打印请求成功后的响应数据
-          if(res.data == true){
+          if(res.data != false){
+            var app=getApp();
+            app.globalData.user_id = res.data;
             wx.showToast({
               title: '登录成功',
               icon: 'success',
