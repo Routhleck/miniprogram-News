@@ -10,9 +10,11 @@ import com.sepbf.backend.pojo.Favourite;
  */
 public interface FavouriteService extends IService<Favourite> {
 
-    boolean addFavourite(Favourite favourite);
+    boolean addFavourite(int news_id,int user_id);
 
-    boolean deleteFavourite(Favourite favourite);
+    boolean deleteFavourite(int news_id,int user_id);
+
+    Favourite selectFavourite(int news_id,int user_id);
 
     Favourite getFavouriteById(Integer id);
 

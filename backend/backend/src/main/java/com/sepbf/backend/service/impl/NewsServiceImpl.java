@@ -46,6 +46,18 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
     }
 
     @Override
+    public boolean deleteFavouritenum(int new_id) {
+        newsMapper.deleteFavourite(new_id);
+        return true;
+    }
+
+    @Override
+    public boolean addFavouritenum(int new_id) {
+        newsMapper.addFavourite(new_id);
+        return true;
+    }
+
+    @Override
     public News getNewsById(Integer id) {
         return newsMapper.selectById(id);
     }

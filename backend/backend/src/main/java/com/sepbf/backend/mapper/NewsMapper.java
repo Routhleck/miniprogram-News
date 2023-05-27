@@ -29,10 +29,10 @@ public interface NewsMapper extends BaseMapper<News> {
 
     //
     @Update("UPDATE news SET favourite_num = favourite_num+1 WHERE news_id = #{news_id} ")
-    boolean addFavourite(Favourite favourite);
+    boolean addFavourite(int news_id);
 
     @Update("UPDATE news SET favourite_num = favourite_num-1 WHERE news_id = #{news_id} ")
-    boolean deleteFavourite(Favourite favourite);
+    boolean deleteFavourite(int news_id);
 
 
 }

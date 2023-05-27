@@ -25,6 +25,7 @@ public class CommentController {
     @PostMapping("/getComment")
     public List<Map<String,Object>> getComment(@RequestBody Map<String, Object> map) {
         int news_id= Integer.parseInt((String) map.get("news_id"));
+
         System.out.println(news_id+"have been received");
 
         List<Comment> commentList=commentService.getComment(news_id);

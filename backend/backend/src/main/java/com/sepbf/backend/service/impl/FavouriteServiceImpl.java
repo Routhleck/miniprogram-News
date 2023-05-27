@@ -7,6 +7,7 @@ import com.sepbf.backend.pojo.Comment;
 import com.sepbf.backend.pojo.Favourite;
 import com.sepbf.backend.service.CommentService;
 import com.sepbf.backend.service.FavouriteService;
+import com.sepbf.backend.service.NewsService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,17 +23,28 @@ public class FavouriteServiceImpl extends ServiceImpl<FavouriteMapper, Favourite
     @Resource
     FavouriteMapper favouriteMapper;
 
+    @Resource
+    NewsService newsService;
 
     @Override
-    public boolean addFavourite(Favourite favourite) {
+    public boolean addFavourite(int news_id, int user_id) {
+        newsService.addFavouritenum(news_id);
+        Favourite favourite = new Favourite(news_id,user_id);
         int result = favouriteMapper.insert(favourite);
         return result == 0;
     }
 
     @Override
-    public boolean deleteFavourite(Favourite favourite) {
+    public boolean deleteFavourite(int news_id, int user_id) {
+        newsService.deleteFavouritenum(news_id);
+        Favourite favourite = favouriteMapper.selectFavourite(news_id,user_id);
         int result = favouriteMapper.delete(favourite);
         return result == 0;
+    }
+
+    @Override
+    public Favourite selectFavourite(int news_id, int user_id) {
+        return favouriteMapper.selectFavourite(user_id,news_id);
     }
 
     @Override
