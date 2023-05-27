@@ -48,7 +48,7 @@ jobs:
         run: |
           docker version
           # 使用Dockerfile构建镜像
-          docker build . --file ./backend/backend/DockerFile --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          docker build . --file ./DockerFile --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           # 推送镜像到镜像仓库
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
  
