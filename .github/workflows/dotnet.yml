@@ -1,0 +1,72 @@
+# 工作流名称
+name: Docker
+ 
+on:
+  push: # 推送的时候触发
+    branches: [ "master" ] # 推送的分支
+    # Publish semver tags as releases.
+    tags: [ 'v0.0.1' ]
+  pull_request:
+    branches: [ "master" ]
+ 
+env:
+  # 仓库地址
+  REGISTRY: registry.cn-hangzhou.aliyuncs.com
+  IMAGE_NAME: bjtu_project/news
+  IMAGE_TAG: latest
+ 
+ 
+jobs:
+  build:
+ 
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      # This is used to complete the identity challenge
+      # with sigstore/fulcio when running outside of PRs.
+      id-token: write
+ 
+    steps:
+      # 将远程仓库中的源代码领取到workfile自动化构建脚本运行的服务器
+      - name: Checkout repository
+        uses: actions/checkout@v3 
+ 
+      # Login against a Docker registry except on PR
+      # https://github.com/docker/login-action
+      - name: login to ${{ env.REGISTRY }}
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c # 用于登录docker以便我们后续上传镜像到自己的镜像仓库
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.USERMAME }} # 镜像仓库用户名
+          password: ${{ secrets.PASSWORD }} # 镜像仓库密码
+ 
+      # 生成和推送镜像  阿里云镜像仓库推送有问题
+      # # https://github.com/docker/build-push-action
+      # - name: Build and push Docker image
+      #   id: build-and-push # 构建docker镜像，推送到自己的docker镜像仓库
+      #   uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+      #   with:
+      #     registry: ${{ env.REGISTRY }}
+      #     username: ${{ secrets.USERMAME }} # 镜像仓库用户名
+      #     password: ${{ secrets.PASSWORD }} # 镜像仓库密码
+      #     push: ${{ github.event_name != 'pull_request' }}
+      #     tags: ${{env.IMAGE_NAME}}:${{env.IMAGE_TAG}}.${{ github.run_id }}.${{ github.run_number }} #动态变量镜像TAG 使用github运行job和jobid设置tag
+      #     context: . # 相对以远程仓库根路径的dockerfile的路径
+      #     file: ./backend/backend/DockerFile # 指定Dockerfile
+ 
+      - name: Build the Docker image
+        run: |
+          docker version
+          # 登录阿里云镜像仓库
+          docker login --username=${{ secrets.USERMAME }} --password=${{ secrets.PASSWORD }} registry.cn-hangzhou.aliyuncs.com
+          # 使用Dockerfile构建镜像  ${{env.IMAGE_TAG}}.${{ github.run_id }}.${{ github.run_number }}
+          docker build . --file ./backend/backend/DockerFile --tag registry.cn-hangzhou.aliyuncs.com/bjtu_project/news:${{env.IMAGE_TAG}} --tag registry.cn-hangzhou.aliyuncs.com/bjtu_project/news:${{ github.run_number }}
+          # 推送镜像到镜像仓库
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{env.IMAGE_TAG}}
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}
+ 
+      # 列出所有镜像    
+      - name: Docker Images Lst 
+        run: docker images
