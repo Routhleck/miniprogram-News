@@ -21,6 +21,7 @@ Page({
     this.setData({
       news_id: event.currentTarget.dataset.flag// 更新输入框的值
     });
+    app.globalData.options = this.data.news_id;
     wx.navigateTo({
       url: '../context/index?news_id=' + JSON.stringify(this.data.news_id)
     })

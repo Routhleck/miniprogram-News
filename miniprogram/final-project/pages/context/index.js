@@ -3,6 +3,7 @@
 
 const app = getApp()
 const Url = app.globalData.Url;
+const options = app.globalData.globaoptions;
 
 Page({
   // 数据绑定
@@ -41,9 +42,7 @@ Page({
     this.data.newForm.news_id = options.news_id;
     this.data.comtentFrom.news_id = parseInt(options.news_id);
     this.data.myfavortFrom.news_id = parseInt(options.news_id);
-    var app = getApp();
     this.data.comtentFrom.user_id= parseInt(app.globalData.user_id);
-    console.log(this.data.newForm);
     wx.request({
       url: Url + '/news/getNewsById',
       method: 'POST',
@@ -114,7 +113,10 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: (res) => {
-        console.log(this.data.getFrom);
+        var option = {
+          'news_id':String(app.globalData.options)
+        }
+        this.onLoad(option);
       },
       fail: function(err){
         console.error(err); // 打印请求失败的错误信息

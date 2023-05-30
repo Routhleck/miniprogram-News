@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container" style="border:solid 1px;background-image: linear-gradient(#5ed6fd, #44ADFB); height: 1000px;position: relative;">
+<view class="container" style="border:solid 1px;background-image: linear-gradient(#5ed6fd, #44ADFB);position: relative;">
       <view class="item">
         <text >{{getFrom.title}}
            {{getFrom.author}}</text>
@@ -10,7 +10,7 @@
        <image class="save" style="align-items: flex-end; height: 50px; width: 50px;"  
        src="/images/07.jpg" bindtap="myfavort"></image>
         <text class="saveText">'收藏'</text>
-        <view wx:for = "{{getFroms}}" wx:key = 'time' style="align-items: flex-end;width: 320px;border: 3rpx solid white;">
+        <view wx:for = "{{getFroms}}" wx:key = 'time' style="align-items: flex-end;width: 100%;border: 3rpx solid white;">
          <text style="align-items: flex-start;left: 0px;">
           {{item.text}}
          </text>
@@ -28,8 +28,6 @@
   </view>
 </view>
 <view class="comment-view" id="njxCommentTextarea" style="bottom: {{textBottom}}px;opacity: {{textOpacity}};">
-  <textarea class="textarea" style="margin-right: {{isIos ? 0 : 10}}px;padding: {{isIos ? '0 10px' : '4px 10px'}};" value="{{inputValue}}" placeholder="{{placeholder}}" placeholder-class="textarea-placeholder" focus="{{focus}}" auto-height fixed adjust-position="{{false}}" cursor-spacing="10" show-confirm-bar="{{false}}" confirm-type="send" bindkeyboardheightchange="getKeyBoardHeight" bindblur="onBlur"></textarea>
-  <view class="njx_button" wx:if="{{!isIos}}">发送</view>
 
   <view class="foot">
     <view class="say">

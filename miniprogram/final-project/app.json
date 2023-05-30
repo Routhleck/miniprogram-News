@@ -27,6 +27,12 @@
     "navigationBarTextStyle": "white",
     "navigationBarBackgroundColor": "#44ADFB"
   },
+  "mp-weixin": {
+    "request": {
+      "scope.userLocation": true, 
+      "scope.userInfo": true 
+    }
+  },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

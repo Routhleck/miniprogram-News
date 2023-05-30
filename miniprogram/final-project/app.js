@@ -1,8 +1,5 @@
 // app.js
 App({
-  globalData: {
-    user_id:""
-},
   onLaunch() {
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []
@@ -18,6 +15,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    Url:'http://127.0.0.1:8888'
+    Url:'http://39.106.13.47:8888',
+    user_id: "",
+    options: ""
   }
 })

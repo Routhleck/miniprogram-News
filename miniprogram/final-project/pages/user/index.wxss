@@ -1,24 +1,29 @@
 /* pages/user/index.wxss */
-.header {
-  font-size: 20px;
-  text-align: center;
-  padding: 10px;
+page {
+  background-color: #f8f8f8;
+  font-size: 32rpx;
 }
-
-.favorite-list {
-  margin-top: 20px;
+/* 我的头像 */
+.avatar {
+  width: 100%;
+  background-color: #44ADFB;
+  height: 400rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-.favorite-item {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+.avatar image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  border: 10rpx solid rgba(0, 0, 0, 0.1);
 }
-
-.favorite-title {
-  font-size: 18px;
-}
-
-.favorite-author {
-  font-size: 14px;
-  color: #888;
+/* 消费记录 */
+.content {
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 0;
 }
