@@ -1,0 +1,42 @@
+<!--index.wxml-->
+<view class="container" style="border:solid 1px;background-image: linear-gradient(#5ed6fd, #44ADFB);position: relative;">
+      <view class="item">
+        <text >{{getFrom.title}}
+           {{getFrom.author}}</text>
+        <text>
+          {{getFrom.text}}</text>
+      </view>
+      <view class="item" >
+       <image wx:if="{{isClick}}" class="save" style="align-items: flex-end; height: 50px; width: 50px;" 
+       src="/images/07.jpg" bindtap="myfavort"></image>
+       <image wx:else class="save" style="align-items: flex-end; height: 50px; width: 50px;"  
+       src="/images/06 .jpg" bindtap="delefavorite"></image>
+        <view wx:for = "{{getFroms}}" wx:key = 'time' style="align-items: flex-end;width: 100%;border: 3rpx solid white;">
+         <text style="align-items: flex-start;left: 0px;">
+          {{item.text}}
+         </text>
+         <text style="align-items: flex-start;left: 0px;">
+          {{item.time}}
+         </text>
+      </view>
+      </view>     
+  </view>
+<view class="njx_container">
+  <view style="padding-bottom: {{paddingBottom}}px;" id="scrollNjx">
+    <view class="njx_card" wx:for="{{list}}" wx:key="id" id="id-{{item.id}}" bindtap="toComment" data-item="{{item}}" style="margin-bottom: {{index === list.length - 1 ? textHeight : 20}}px;">
+      {{item.id}}
+    </view>
+  </view>
+</view>
+<view class="comment-view" id="njxCommentTextarea" style="bottom: {{textBottom}}px;opacity: {{textOpacity}};">
+  <view class="foot">
+    <view class="say">
+      <view class="flex">
+        <input  class="say_inp" placeholder="{{ placeholder}}"  value="{{ comment_text }}" focus="{{ focus }}"  confirm-type="send"
+        bindinput="inputedit"></input>
+      <button   type="default" plain="true" bindtap="confirm">发送</button>
+      </view>
+    </view>
+  </view>  
+</view>
+
