@@ -42,12 +42,10 @@ public class FavouriteController {
 
     @PostMapping("/deleteFavourite")
     public boolean deleteFavourite(@RequestBody Map<String, Object> map) {
-        int news_id= Integer.parseInt((String) map.get("news_id"));
-        int user_id= Integer.parseInt((String) map.get("user_id"));
+        int news_id = Integer.parseInt((String) map.get("news_id"));
+        int user_id = Integer.parseInt((String) map.get("user_id"));
 
-        favouriteService.deleteFavourite(news_id,user_id);
+        favouriteService.deleteFavourite(news_id, user_id);
         return true;
     }
-
-
 }

@@ -20,4 +20,6 @@ public interface FavouriteService extends IService<Favourite> {
 
     boolean updateFavourite(Favourite favourite);
 
+    boolean isLike(int news_id,int user_id);
+
 }

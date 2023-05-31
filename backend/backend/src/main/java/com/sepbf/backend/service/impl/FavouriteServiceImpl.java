@@ -58,6 +58,12 @@ public class FavouriteServiceImpl extends ServiceImpl<FavouriteMapper, Favourite
         return favouriteMapper.selectById(id);
     }
 
+    @Override
+    public boolean isLike(int news_id,int user_id){
+        Favourite favourite = favouriteMapper.selectFavourite(news_id,user_id);
+        return favourite != null;
+    }
+
 
 
 }

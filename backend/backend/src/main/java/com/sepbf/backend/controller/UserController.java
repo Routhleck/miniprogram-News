@@ -2,6 +2,7 @@ package com.sepbf.backend.controller;
 
 import com.sepbf.backend.pojo.News;
 import com.sepbf.backend.pojo.User;
+import com.sepbf.backend.service.FavouriteService;
 import com.sepbf.backend.service.NewsService;
 import com.sepbf.backend.service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,9 @@ public class UserController {
 
     @Resource
     private NewsService newsService;
+
+    @Resource
+    private FavouriteService favouriteService;
 
 
     @PostMapping("/login")
@@ -93,6 +97,15 @@ public class UserController {
         resultMap.put("favourites", favoriteList);
 
         return resultMap;
+    }
+
+    @PostMapping("/islike")
+    public boolean isLike(@RequestBody Map<String, Object> requestBody) {
+        int userId = (int) requestBody.get("user_id");
+        int newsId = (int) requestBody.get("news_id");
+        // 判断用户是否收藏了该新闻
+        boolean isLike = favouriteService.isLike(userId, newsId);
+        return isLike;
     }
 
 
