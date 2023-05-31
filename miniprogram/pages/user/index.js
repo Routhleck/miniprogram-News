@@ -20,7 +20,6 @@ Page({
       title: '温馨提示',
       content: '亲，授权微信登录后才能正常使用小程序功能',
       success(res) {
-        console.log(res)
         //如果用户点击了确定按钮
         if (res.confirm) {
           wx.getUserProfile({
@@ -56,6 +55,15 @@ Page({
       }
     });
   },
+  jump: function (event) {
+    this.setData({
+      news_id: event.currentTarget.dataset.flag// 更新输入框的值
+    });
+    app.globalData.options = this.data.news_id;
+    wx.navigateTo({
+      url: '../context/index?news_id=' + JSON.stringify(this.data.news_id)
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -74,7 +82,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-  var _this = this;
   if(app.globalData.hasUserInfo == true){
     this.data.userFavorForm.user_id = app.globalData.user_id;
     const userIdJson = JSON.stringify(this.data.userFavorForm);
@@ -83,7 +90,10 @@ Page({
       method: 'POST',
       data: userIdJson,
       success: (res) => {
-        _this.listData = res.data;
+        this.setData({
+          listData: res.data
+        })
+        console.log(this.data.listData);
       },
       fail: (err) => {
         console.error(err);

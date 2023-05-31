@@ -12,11 +12,11 @@
   <view class="con">个人收藏</view>
 </view>
 <view class="favor-content" 
-wx:for="{{ listData }}" 
+wx:for="{{ listData.favourites }}" 
 wx:for-item="items" 
 wx:key="{{ items.news_id }}">
   <view class="content-infoL" style="display:flex">
     <view>收藏</view>
-    <text bindtap="jump" data-flag="{{item.news_id}}">标题：{{item.title}}</text>
+    <text bindtap="jump" data-flag="{{items.news_id}}">标题：{{items.title}}</text>
   </view>
 </view>

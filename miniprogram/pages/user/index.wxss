@@ -27,3 +27,16 @@ page {
   justify-content: center;
   padding: 20rpx 0;
 }
+.content-infoL {
+  display: flex;
+  flex-direction: column;
+}
+.favor-content {
+  padding: 40rpx 20rpx;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1rpx solid #ececec;
+}
