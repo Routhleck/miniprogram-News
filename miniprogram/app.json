@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/main/index",
+    "pages/context/index",
+    "pages/user/index"
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/main/index",
+        "text": "首页",
+        "iconPath": "images/首页未选中-01.png",
+        "selectedIconPath": "images/首页选中-01.png"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": "个人收藏",
+        "iconPath": "images/我的未选中-01.png",
+        "selectedIconPath": "images/我的选中-01.png"
+      }
+    ],
+    "selectedColor": "#2c2c2c"
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#44ADFB"
+  },
+  "mp-weixin": {
+    "request": {
+      "scope.userLocation": true, 
+      "scope.userInfo": true 
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
