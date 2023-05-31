@@ -1,5 +1,7 @@
 // pages/user/index.js
 const app = getApp();
+const Url = app.globalData.Url;
+const options = app.globalData.options;
 
 Page({
 
@@ -7,6 +9,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userFavorForm:{
+      user_id: ''
+    },
+    listData: []
   },
   getUserInfo(e) {
     var _this = this
@@ -19,13 +25,13 @@ Page({
         if (res.confirm) {
           wx.getUserProfile({
             desc: '获取你的昵称、头像、地区及性别',
-            success: res => {
+            success: (res) => {
               _this.setData({
                 userInfo: res.userInfo,
-                hasUserInfo: true
+                hasUserInfo: true,
               })
+              app.globalData.hasUserInfo = true;
               console.log(res);
-              console.log(1);
             },
             fail: res => {
               console.log(res)
@@ -54,7 +60,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(res) {
-    
+
   },
 
   /**
@@ -68,7 +74,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+  var _this = this;
+  if(app.globalData.hasUserInfo == true){
+    this.data.userFavorForm.user_id = app.globalData.user_id;
+    const userIdJson = JSON.stringify(this.data.userFavorForm);
+    wx.request({
+      url: Url + '/user/getUserInfo',
+      method: 'POST',
+      data: userIdJson,
+      success: (res) => {
+        _this.listData = res.data;
+      },
+      fail: (err) => {
+        console.error(err);
+      }
+    })
+  }
   },
 
   /**

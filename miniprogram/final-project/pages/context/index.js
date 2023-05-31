@@ -1,9 +1,8 @@
 // index.js
 // 获取应用实例
 
-const app = getApp()
+const app = getApp();
 const Url = app.globalData.Url;
-const options = app.globalData.globaoptions;
 
 Page({
   // 数据绑定

@@ -17,6 +17,7 @@ App({
     userInfo: null,
     Url:'http://39.106.13.47:8888',
     user_id: "",
-    options: ""
+    options: "",
+    hasUserInfo: false
   }
 })
