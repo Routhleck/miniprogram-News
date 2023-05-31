@@ -96,8 +96,10 @@ Page({
         }
       })
   },
-  confirm(e){
+  inputedit(e){
     this.data.comtentFrom.text= e.detail.value;
+},
+  confirm(){
     var timestamp = Date.parse(new Date());
     var date = new Date(timestamp);//获取年份
     var Y =date.getFullYear();//获取月份
