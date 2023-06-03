@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container" style="border:solid 1px;background-image: linear-gradient(#5ed6fd, #44ADFB);position: relative;">
+<view style="border:solid 1px;background-image: linear-gradient(#5ed6fd, #44ADFB);position: relative;">
       <view class="item">
         <text >{{getFrom.title}}
            {{getFrom.author}}</text>
@@ -20,7 +20,7 @@
          </text>
       </view>
       </view>     
-  </view>
+</view>
 <view class="njx_container">
   <view style="padding-bottom: {{paddingBottom}}px;" id="scrollNjx">
     <view class="njx_card" wx:for="{{list}}" wx:key="id" id="id-{{item.id}}" bindtap="toComment" data-item="{{item}}" style="margin-bottom: {{index === list.length - 1 ? textHeight : 20}}px;">

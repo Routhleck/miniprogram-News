@@ -25,6 +25,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true,
     "navigationBarBackgroundColor": "#44ADFB"
   },
   "mp-weixin": {

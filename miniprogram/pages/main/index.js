@@ -18,6 +18,7 @@ Page({
 
   },
   jump: function (event) {
+    console.log(event.currentTarget.dataset.flag);
     this.setData({
       news_id: event.currentTarget.dataset.flag// 更新输入框的值
     });
@@ -56,7 +57,28 @@ Page({
   },
   onUnload: function() {
     // 页面关闭
-  }
+  },
+  onReachBottom() {
+    this.myNews();
+    console.log("上拉加载...");
+    wx.showToast({
+      title: '刷新成功',
+      icon: 'none',
+      duration: 1000
+  })
+  wx.hideNavigationBarLoading() 
+  wx.stopPullDownRefresh()
+  },
+  onPullDownRefresh(){
+    console.log("下拉刷新...");
+    wx.showToast({
+      title: '刷新成功',
+      icon: 'none',
+      duration: 1000
+  })
+  wx.hideNavigationBarLoading() 
+  wx.stopPullDownRefresh()
+},
 })
 
 

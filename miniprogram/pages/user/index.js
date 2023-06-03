@@ -135,5 +135,15 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+  },
+  onPullDownRefresh(){
+    console.log("下拉刷新...");
+    wx.showToast({
+      title: '刷新成功',
+      icon: 'none',
+      duration: 1000
+  })
+  wx.hideNavigationBarLoading() 
+  wx.stopPullDownRefresh()
+},
 })

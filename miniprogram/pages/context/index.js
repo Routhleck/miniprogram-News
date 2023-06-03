@@ -220,7 +220,32 @@ Page({
   onUnload: function() {
     // 页面关闭
     console.log('onUnload');
-  }
+  },
+  onReachBottom() {
+    var option = {
+      'news_id':String(app.globalData.options)
+    }
+    console.log(option);
+    this.onLoad(option);
+    console.log("上拉加载...");
+    wx.showToast({
+      title: '刷新成功',
+      icon: 'none',
+      duration: 1000
+  })
+  wx.hideNavigationBarLoading() 
+  wx.stopPullDownRefresh()
+  },
+  onPullDownRefresh(){
+    console.log("下拉刷新...");
+    wx.showToast({
+      title: '刷新成功',
+      icon: 'none',
+      duration: 1000
+  })
+  wx.hideNavigationBarLoading() 
+  wx.stopPullDownRefresh()
+},
 })
 
 
