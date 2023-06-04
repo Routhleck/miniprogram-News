@@ -36,7 +36,7 @@ Page({
     checkForm:{
       news_id:"",
       user_id:""
-    },
+    }
   },
   imgPath: "/images/...",
   getData:function(){
@@ -57,7 +57,8 @@ Page({
       success: (res) => {
  // 打印请求成功后的响应数据
         this.setData({
-          getFrom:res.data// 更新输入框的值
+          getFrom:res.data,// 更新输入框的值
+          pasage:app.globalData.user_id
         });
         console.log(this.data.getFrom);
       },
@@ -84,7 +85,6 @@ Page({
     })
 
   },
-
   delefavorite(){
     this.setData({
       isClick:true
