@@ -1,7 +1,7 @@
 package com.sepbf.backend.controller;/*
  author:@Antidote
  date:2023/5/2219:26
- 
+
 */
 
 import com.sepbf.backend.pojo.Comment;
@@ -33,6 +33,7 @@ public class CommentController {
 
         for (Comment comment: commentList){
             Map<String, Object> commentMap = new HashMap<>();
+            commentMap.put("user_id",comment.getUser_id());
             commentMap.put("time",comment.getTime());
             commentMap.put("text",comment.getText());
             resultList.add(commentMap);
