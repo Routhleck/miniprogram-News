@@ -44,7 +44,6 @@ Page({
   },
   onLoad(options){
     this.data.checkForm.user_id= parseInt(app.globalData.user_id);
-    this.check();
     this.data.newForm.news_id = options.news_id;
     this.data.comtentFrom.news_id = parseInt(options.news_id);
     this.data.myfavortFrom.news_id = String(options.news_id);
@@ -84,31 +83,6 @@ Page({
       }
     })
 
-  },
-  check(){
-    var app = getApp();
-    this.data.checkForm.user_id = parseInt(app.globalData.user_id);
-    this.data.checkForm.news_id = parseInt(app.globalData.options);
-    wx.request({
-      url: Url + '/user/islike',
-      method: 'POST',
-      data:this.data.checkForm,
-      dataType: 'json',
-      responseType: 'text',
-      success: (res) => {
-        this.data.redss = res.data;
-      },
-      fail: function(err){
-        console.error(err); // 打印请求失败的错误信息
-      }
-    });
-    if(this.data.redss == true){
-      this.data.isClick = false;
-    }
-    else if(this.data.redss == false){
-      this.data.isClick = true;
-    }
-    console.log(this.data.isClick);
   },
 
   delefavorite(){
@@ -215,7 +189,6 @@ Page({
   onShow: function() {
     // 页面显示
     console.log('onShow');
-    this.check();
   },
   onHide: function() {
     // 页面隐藏
