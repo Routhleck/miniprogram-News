@@ -65,6 +65,18 @@ public class CommentController {
 
     }
 
+    @PostMapping("/deleteComment")
+    public boolean deleteComment(@RequestBody Map<String,Object> map){
+        try {
+            int comment_id= Integer.parseInt((String) map.get("comment_id"));
+            commentService.deleteComment(comment_id);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
 
 

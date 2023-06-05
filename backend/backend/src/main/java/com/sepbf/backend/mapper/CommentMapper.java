@@ -2,6 +2,7 @@ package com.sepbf.backend.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.sepbf.backend.pojo.Comment;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -16,6 +17,9 @@ import java.util.List;
 public interface CommentMapper extends BaseMapper<Comment> {
 
     int delete(Comment comment);
+
+    @Delete("DELETE FROM comment WHERE comment_id=#{id}")
+    int deleteById(int id);
 
     @Select("SELECT * FROM comment WHERE news_id=#{news_id}")
     List<Comment> getCommentByNewsId(int id);

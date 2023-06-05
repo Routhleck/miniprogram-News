@@ -14,7 +14,7 @@ public interface CommentService extends IService<Comment> {
 
     boolean addComment(Comment comment);
 
-    boolean deleteComment(Comment comment);
+    boolean deleteComment(int id);
 
     boolean updateComment(Comment comment);
 
