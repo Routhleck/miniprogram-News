@@ -85,6 +85,9 @@ Page({
     })
 
   },
+  delete(event){
+    console.log(event.currentTarget.dataset.flag);
+  },
   delefavorite(){
     this.setData({
       isClick:true
