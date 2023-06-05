@@ -33,6 +33,7 @@ public class CommentController {
 
         for (Comment comment: commentList){
             Map<String, Object> commentMap = new HashMap<>();
+            commentMap.put("comment_id",comment.getComment_id());
             commentMap.put("user_id",comment.getUser_id());
             commentMap.put("time",comment.getTime());
             commentMap.put("text",comment.getText());
