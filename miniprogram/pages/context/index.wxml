@@ -16,7 +16,7 @@
           {{item.text}}
          </text>
          <view wx:if="{{ item.user_id == pasage}}">
-         <button  type="default" plain="true" bindtap="delete" data-flag="{{item.id}}"style="width:40%;height:80rpx;right:0;position:absolute;">删除</button>
+         <button  type="default" plain="true" bindtap="delete" data-flag="{{item.comment_id}}" style="width:40%;height:80rpx;right:0;position:absolute;">删除</button>
         </view>
          <text style="align-items: flex-start;left: 0px;">
           {{item.time}}

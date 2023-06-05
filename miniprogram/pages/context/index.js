@@ -17,6 +17,9 @@ Page({
     isClick:true,
     jobStorage:[],
     jobId:'',
+    delete:{
+      comment_id:""
+    },
     newForm:{
       news_id:"",
     },
@@ -86,7 +89,33 @@ Page({
 
   },
   delete(event){
-    console.log(event.currentTarget.dataset.flag);
+    this.data.delete.comment_id = String(event.currentTarget.dataset.flag);
+    console.log(this.data.delete);
+    wx.request({
+      url: Url + '/deleteComment',
+      method: 'POST',
+      data:this.data.delete,
+      dataType: 'json',
+      responseType: 'text',
+      success: (res) => {
+        var option = {
+          'news_id':String(app.globalData.options)
+        }
+        this.onLoad(option);
+        let jobData = this.data.jobStorage;
+        jobData.push({
+          jobid:jobData.length,
+          id:this.data.job.id
+        })
+        wx.setStorageSync('jobData', jobData);
+        wx.showToast({
+          title: '已删除',
+        });
+      },
+      fail: function(err){
+        console.error(err); // 打印请求失败的错误信息
+      }
+    })
   },
   delefavorite(){
     this.setData({
