@@ -1,6 +1,5 @@
 package com.sepbf.backend.controller;
 
-import com.sepbf.backend.pojo.Comment;
 import com.sepbf.backend.pojo.News;
 import com.sepbf.backend.service.CommentService;
 import com.sepbf.backend.service.NewsService;
@@ -51,6 +50,32 @@ public class NewsController {
             resultMap.put("favorite_num", news.getFavourite_num());
 
             return resultMap;
+    }
+
+    @PostMapping("/getNewsByIndexNumCategory")
+    public List<Map<String, Object>> getNewsByIndexNumCategory(@RequestBody Map<String, Object> map) {
+        int index = Integer.parseInt((String) map.get("index"));
+        int num = Integer.parseInt((String) map.get("num"));
+        String category = (String) map.get("category");
+
+        // 判断index是否超过数组大小, 若超过则返回空
+        int maxIndex = newsService.getNewsLenByCategory(category);
+        if (index > maxIndex) {
+            return null;
+        }
+
+        List<News> newsList = newsService.getNewsByIndexNumCategory(index, num, category);
+
+        List<Map<String, Object>> resultList = new ArrayList<>();
+        for (News news : newsList) {
+            Map<String, Object> newsMap = new HashMap<>();
+            newsMap.put("news_id", news.getNews_id());
+            newsMap.put("title", news.getTitle());
+            resultList.add(newsMap);
+        }
+
+        return resultList;
+
     }
 
 

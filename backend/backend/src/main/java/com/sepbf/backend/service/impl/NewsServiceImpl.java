@@ -80,6 +80,24 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
         return newsList;
     }
 
+    @Override
+    public int getNewsLenByCategory(String category) {
+        return newsMapper.selectByCategory(category).size();
+    }
+
+    @Override
+    public List<News> getNewsByIndexNumCategory(int index, int num, String category) {
+        // 获取指定类别的所有新闻
+        List<News> newsList = newsMapper.selectByCategory(category);
+        // 按照时间从近到远排序
+        newsList.sort((o1, o2) -> o2.getTime().compareTo(o1.getTime()));
+        // 判断index+num是否超过新闻总数
+        if (index + num > newsList.size()) {
+            return newsList.subList(index, newsList.size());
+        } else {
+            return newsList.subList(index, index + num);
+        }
+    }
 
 
 }

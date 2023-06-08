@@ -35,4 +35,6 @@ public interface NewsMapper extends BaseMapper<News> {
     boolean deleteFavourite(int news_id);
 
 
+    @Select("SELECT * FROM news WHERE category=#{category}")
+    List<News> selectByCategory(String category);
 }
