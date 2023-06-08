@@ -1,4 +1,11 @@
 /* pages/context/index.wxss */
+.njx_container{
+  display: flex; 
+}
+.content-infoL {
+  display: flex;
+  flex-direction: column;
+}
 .container{
   top:0px;
   height: 100%;
