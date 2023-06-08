@@ -27,10 +27,10 @@ public class News {
     private String category;
 
 
-    private String url;
+    private String image_url;
 
     //构造函数
-    public News(int news_id, String title, String author, Date time, String text, int favourite_num, String category, String url) {
+    public News(int news_id, String title, String author, Date time, String text, int favourite_num, String category, String image_url) {
         this.news_id = news_id;
         this.title = title;
         this.author = author;
@@ -38,7 +38,7 @@ public class News {
         this.text = text;
         this.favourite_num = favourite_num;
         this.category = category;
-        this.url = url;
+        this.image_url = image_url;
     }
 
 }
