@@ -87,7 +87,7 @@ public class NewsController {
             Map<String, Object> newsMap = new HashMap<>();
             newsMap.put("news_id", news.getNews_id());
             newsMap.put("title", news.getTitle());
-            newsMap.put("image_url", news.getUrl());
+            newsMap.put("image_url", news.getImage_url());
             resultList.add(newsMap);
         }
         return resultList;
