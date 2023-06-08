@@ -99,5 +99,10 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
         }
     }
 
+    @Override
+    public List<News> getAllNewsByCategory(String category) {
+        return newsMapper.selectByCategory(category);
+    }
+
 
 }

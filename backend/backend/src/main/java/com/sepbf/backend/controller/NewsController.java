@@ -75,7 +75,22 @@ public class NewsController {
         }
 
         return resultList;
+    }
 
+    @PostMapping("/getNewsByIndexNum")
+    public List<Map<String, Object>> getAllNewsByCategory(@RequestBody Map<String, Object> map) {
+        String category = (String) map.get("category");
+
+        List<News> newsList = newsService.getAllNewsByCategory(category);
+        List<Map<String, Object>> resultList = new ArrayList<>();
+        for (News news : newsList) {
+            Map<String, Object> newsMap = new HashMap<>();
+            newsMap.put("news_id", news.getNews_id());
+            newsMap.put("title", news.getTitle());
+            newsMap.put("url", news.getUrl());
+            resultList.add(newsMap);
+        }
+        return resultList;
     }
 
 

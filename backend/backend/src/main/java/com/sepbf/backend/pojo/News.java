@@ -23,15 +23,22 @@ public class News {
 
     private int favourite_num;
 
+
+    private String category;
+
+
+    private String url;
+
     //构造函数
-    public News(int news_id, String title, String author, Date time, String text, int favourite_num) {
+    public News(int news_id, String title, String author, Date time, String text, int favourite_num, String category, String url) {
         this.news_id = news_id;
         this.title = title;
         this.author = author;
         this.time = time;
         this.text = text;
         this.favourite_num = favourite_num;
+        this.category = category;
+        this.url = url;
     }
-
 
 }

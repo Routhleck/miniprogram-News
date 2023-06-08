@@ -31,4 +31,6 @@ public interface NewsService extends IService<News> {
         int getNewsLenByCategory(String category);
 
         List<News> getNewsByIndexNumCategory(int index, int num, String category);
+
+        List<News> getAllNewsByCategory(String category);
 }
