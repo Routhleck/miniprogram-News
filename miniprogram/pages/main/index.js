@@ -3,6 +3,13 @@
 
 const app = getApp()
 const Url = app.globalData.Url;
+const map = new Map()
+    map.set(0,"top")
+    map.set(1,"sports")
+    map.set(2,"military")
+    map.set(3,"technology")
+    map.set(4,"finance")
+    map.set(5,"society")
 
 Page({
   // 数据绑定
@@ -27,6 +34,7 @@ Page({
       current:current
     })
     this.myNews();
+    this.onPullDownRefresh();
   },
   // 自定义方法
   process: function() {
@@ -44,29 +52,20 @@ Page({
   },
   myNews:function(){
     let _this = this
-    const map = new Map()
-    map.set(0,"top")
-    map.set(1,"sports")
-    map.set(2,"military")
-    map.set(3,"technology")
-    map.set(4,"finance")
-    map.set(5,"society")
     const category = map.get(_this.data.current)
     _this.data.categorytype.category = category;
     const categoryJson = JSON.stringify(_this.data.categorytype);
-    console.log(categoryJson)
     wx.request({
       url: Url + '/news/getAllNewsByCategory',
       method: 'POST',
       data: categoryJson,
       success: (res) => {
-        console.log(res)
  // 打印请求成功后的响应数据
         let list = res.data;
         let qielist = list.slice(_this.data.page-1,_this.data.pagesize)
         _this.setData({
           yaolist:list,     //全部数据
-          showlist:qielist, //刚进来第一次展示数据
+          showlist:qielist //刚进来第一次展示数据
         });
       },
       fail: function(err){
@@ -94,16 +93,20 @@ Page({
    */
   onReachBottom () {
     wx.showLoading({
-      title: '加载中',
+      title: '加载中'
     })
     let shu = this.data.page
     this.setData({
-      page:shu+1
+      page: shu + 1
     })
     let num = (this.data.page-1)*this.data.pagesize   
     let num2 = num+this.data.pagesize
     let arr = this.data.yaolist
+    console.log("这是yaolist")
+    console.log(arr)
     let qielist = arr.slice(num,num2)
+    console.log("这是qielist")
+    console.log(qielist)
     let slist = this.data.showlist
     let newarr = slist.concat(qielist)
     this.setData({
