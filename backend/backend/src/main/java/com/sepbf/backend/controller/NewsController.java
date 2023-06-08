@@ -77,7 +77,7 @@ public class NewsController {
         return resultList;
     }
 
-    @PostMapping("/getNewsByIndexNum")
+    @PostMapping("/getAllNewsByCategory")
     public List<Map<String, Object>> getAllNewsByCategory(@RequestBody Map<String, Object> map) {
         String category = (String) map.get("category");
 
