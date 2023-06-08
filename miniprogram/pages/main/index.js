@@ -8,11 +8,19 @@ Page({
   // 数据绑定
   data: {
     news_id:"",
-    newForm:[]
+    newForm:[],
+    tabs: ['新报修', '维修中', '已完成'],
+    current:0,
   },
   // 自定义变量
   imgPath: "/images/...",
-
+  
+  tabSelect:function(e){
+    var current = e.currentTarget.dataset.id
+    this.setData({
+      current:current
+    })
+  },
   // 自定义方法
   process: function() {
 
