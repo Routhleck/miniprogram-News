@@ -32,11 +32,14 @@
   	</view>
   </view>
 
-  <view style="border:solid 1px;background-image: linear-gradient(#5ed6fd, #44ADFB);">
-    <view wx:for = "{{ showlist }}" wx:key = 'news_id' style="border:solid 1px; position:relative; height : 50px;" >
-      <swiper-item>
-        <text bindtap="jump" data-flag="{{item.news_id}}">{{item.title}}</text>
-      </swiper-item>
-    </view>
+  <view style="border: solid 1px; background-image: linear-gradient(#5ed6fd, #44ADFB);">
+  <view wx:for="{{ showlist }}" wx:key='news_id' style="border: solid 1px; position: relative; height: 150px;">
+    <swiper-item>
+      <view class="item-container">
+        <image class="item-image" src="{{ item.image_url }}"></image>
+        <text class="item-title" bindtap="jump" data-flag="{{ item.news_id }}">{{ item.title }}</text>
+      </view>
+    </swiper-item>
   </view>
+</view>
 </view>

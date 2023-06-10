@@ -54,3 +54,29 @@ swiper image{
   padding: 0 20rpx;
   flex: 1;
 }
+.item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-image {
+  height: 100px;
+  position: relative;
+  z-index: 0;
+}
+
+.item-title {
+  position: relative;
+  z-index: 1;
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
