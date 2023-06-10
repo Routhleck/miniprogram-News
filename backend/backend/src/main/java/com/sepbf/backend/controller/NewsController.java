@@ -48,6 +48,7 @@ public class NewsController {
             resultMap.put("time", news.getTime());
             resultMap.put("text", news.getText());
             resultMap.put("favorite_num", news.getFavourite_num());
+            resultMap.put("image_url", news.getImage_url());
 
             return resultMap;
     }
