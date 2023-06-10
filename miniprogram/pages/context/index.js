@@ -58,7 +58,7 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: (res) => {
- // 打印请求成功后的响应数据
+        // 打印请求成功后的响应数据
         this.setData({
           getFrom:res.data,// 更新输入框的值
           pasage:app.globalData.user_id

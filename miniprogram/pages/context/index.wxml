@@ -1,4 +1,7 @@
 <!--index.wxml-->
+<view>
+<image src="{{ getFrom.image_url }}" style="width: 100%;"></image>
+</view>
 <view style="border:solid 1px;background-image: linear-gradient(#5ed6fd, #44ADFB);position: relative;">
       <view class="item">
         <text >{{getFrom.title}}
