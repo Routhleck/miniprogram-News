@@ -37,9 +37,8 @@ public class FavouriteServiceImpl extends ServiceImpl<FavouriteMapper, Favourite
     @Override
     public boolean deleteFavourite(int news_id, int user_id) {
         newsService.deleteFavouritenum(news_id);
-        Favourite favourite = favouriteMapper.selectFavourite(news_id,user_id);
-        int result = favouriteMapper.delete(favourite);
-        return result == 0;
+        boolean result = favouriteMapper.deleteFavourite(user_id, news_id);
+        return result;
     }
 
     @Override
