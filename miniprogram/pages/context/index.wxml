@@ -1,14 +1,11 @@
 <!--index.wxml-->
 <view>
-<image src="{{ getFrom.image_url }}" style="width: 100%;"></image>
+<image class="top-image" src="{{ getFrom.image_url }}" style="width: 100%;"></image>
 </view>
 <view style="border:solid 1px;background-image: linear-gradient(#5ed6fd, #44ADFB);position: relative;">
-      <view class="item">
-        <text >{{getFrom.title}}
-           {{getFrom.author}}</text>
-        <text>
-          {{getFrom.text}}</text>
-      </view>
+        <text class="title">{{getFrom.title}}\n</text>
+        <text class="author">{{getFrom.author}}\n</text>
+        <text class="main-text">{{getFrom.text}}</text>
        
       <view class="item" style="margin-bottom: 130rpx;">
        <image wx:if="{{isClick}}" class="save" style="align-items: flex-end; height: 50px; width: 50px;" 
