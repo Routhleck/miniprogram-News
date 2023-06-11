@@ -1,14 +1,12 @@
 <!--index.wxml-->
+<text class="title">{{getFrom.title}}\n</text>
 <view>
 <image class="top-image" src="{{ getFrom.image_url }}" style="width: 100%;"></image>
 </view>
-<view style="border:solid 1px;background-image: linear-gradient(#5ed6fd, #44ADFB);position: relative;">
-        <text class="title">{{getFrom.title}}\n</text>
-        <text class="author">{{getFrom.author}}\n</text>
-        <text class="main-text">{{getFrom.text}}</text>
-       
-      <view class="item" style="margin-bottom: 130rpx;">
-       <image wx:if="{{isClick}}" class="save" style="align-items: flex-end; height: 50px; width: 50px;" 
+<text class="author">{{getFrom.author}}\n</text>
+<text class="main-text">{{getFrom.text}}</text>
+<view class="item" style="margin-bottom: 130rpx;">
+       <image wx:if="{{!isLike}}" class="save" style="align-items: flex-end; height: 50px; width: 50px;" 
        src="/images/07.jpg" bindtap="myfavort"></image>
        <image wx:else class="save" style="align-items: flex-end; height: 50px; width: 50px;"  
        src="/images/06 .jpg" bindtap="delefavorite"></image>
@@ -32,7 +30,6 @@
        <view class="content-infoL" style="display:flex">
         {{item.id}}
        </view>
-    </view>
 <view class="comment-view" id="njxCommentTextarea" style="bottom: {{textBottom}}px;opacity: {{textOpacity}};"> 
 </view>
 </view>
@@ -41,7 +38,7 @@
       <view class="flex">
         <input  class="say_inp" placeholder="{{ placeholder }}"  value="{{ comment_text }}" focus="{{ focus }}"  confirm-type="send"
         bindinput="inputedit"></input>
-      <button   type="default" plain="true" bindtap="confirm">发送</button>
+      <button   type="default" plain="true" bindtap="confirm" style="width: 200rpx; height: 70rpx;">发送</button>
       </view>
     </view>
   </view>

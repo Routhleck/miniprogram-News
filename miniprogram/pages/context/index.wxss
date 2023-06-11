@@ -2,7 +2,7 @@
 
 .top-image {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 0px;
 }
 
 .view-news {
@@ -160,4 +160,8 @@
 
 .comment-view {
   border-radius: 8px;
+}
+
+.button-send {
+  width: 20px;
 }

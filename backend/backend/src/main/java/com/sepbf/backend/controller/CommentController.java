@@ -54,7 +54,7 @@ public class CommentController {
         Date date = Date.valueOf(localDate);
 
 
-            Comment new_comment= new Comment(news_id,user_id,date,text);
+        Comment new_comment= new Comment(news_id,user_id,date,text);
         commentService.addComment(new_comment);
 
         return true;} catch (Exception e) {

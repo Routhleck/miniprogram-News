@@ -16,7 +16,6 @@ wx:for="{{ listData.favourites }}"
 wx:for-item="items" 
 wx:key="{{ items.news_id }}">
   <view class="content-infoL" style="display:flex">
-    <view>收藏</view>
-    <text bindtap="jump" data-flag="{{items.news_id}}">标题：{{items.title}}</text>
+    <text bindtap="jump" data-flag="{{items.news_id}}">{{items.title}}</text>
   </view>
 </view>

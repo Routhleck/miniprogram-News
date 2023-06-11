@@ -16,7 +16,7 @@ Page({
   data: {
     news_id:"",
     yaolist:[],
-    pagesize: 6,
+    pagesize: 4,
     page: 1,
     showlist: [],
     tabs: ['头条', '体育', '军事','科技','财经','社会'],

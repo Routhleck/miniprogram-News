@@ -14,7 +14,7 @@ Page({
     jobList:[],
     id:'',
     redss:true,
-    isClick:true,
+    isLike:true,
     jobStorage:[],
     jobId:'',
     delete:{
@@ -86,6 +86,24 @@ Page({
         console.error(err); // 打印请求失败的错误信息
       }
     })
+    // 将checkForm改为int类型
+    this.data.checkForm.news_id = parseInt(options.news_id);
+    this.data.checkForm.user_id = parseInt(app.globalData.user_id);
+    // 获取收藏状态, 参数为user_id, news_id
+    wx.request({
+      url: Url + '/user/islike',
+      method: 'POST',
+      data:this.data.checkForm,
+      dataType: 'json',
+      responseType: 'text',
+      success: (res) => {
+        // 打印请求成功后的响应数据
+        this.setData({
+          isLike:res.data// 更新输入框的值
+        });
+        console.log(this.data.isLike);
+      }
+    })
 
   },
   delete(event){
@@ -119,9 +137,9 @@ Page({
   },
   delefavorite(){
     this.setData({
-      isClick:true
+      isLike:true
    });
-   console.log(this.data.isClick);
+   console.log(this.data.isLike);
     var app = getApp();
     this.data.myfavortFrom.user_id = String(app.globalData.user_id);
     wx.request({
@@ -153,9 +171,9 @@ Page({
   },
   myfavort(){
       this.setData({
-         isClick:false
+         isLike:false
       });
-      console.log(this.data.isClick);
+      console.log(this.data.isLike);
       var app = getApp();
       this.data.myfavortFrom.user_id = String(app.globalData.user_id);
       console.log(this.data.myfavortFrom);
