@@ -15,7 +15,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    Url:'http://39.106.13.47:8888',
+    Url:'https://cloudsports.top',
     user_id: "",
     options: "",
     hasUserInfo: false
