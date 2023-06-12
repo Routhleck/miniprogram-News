@@ -3,7 +3,7 @@
 <view>
 <image class="top-image" src="{{ getFrom.image_url }}" style="width: 100%;"></image>
 </view>
-<text class="author">{{getFrom.author}}\n</text>
+<text class="author">作者: {{getFrom.author}}\n</text>
 <text class="main-text">{{getFrom.text}}</text>
 <view class="item" style="margin-bottom: 130rpx;">
        <image wx:if="{{!isLike}}" class="save" style="align-items: flex-end; height: 50px; width: 50px;" 
