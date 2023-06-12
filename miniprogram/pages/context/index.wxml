@@ -5,24 +5,31 @@
     <image class="top-image" src="{{ getFrom.image_url }}" style="width: 100%;"></image>
   </view>
   <text class="author">作者: {{getFrom.author}}\n</text>
-  <text class="main-text">{{getFrom.text}}</text>
-  <view class="item" style="margin-bottom: 130rpx;">
-    <image wx:if="{{!isLike}}" class="save" style="align-items: flex-end; height: 50px; width: 50px;" src="/images/07.jpg" bindtap="myfavort"></image>
-    <image wx:else class="save" style="align-items: flex-end; height: 50px; width: 50px;" src="/images/06 .jpg" bindtap="delefavorite"></image>
+
+  <view>
+  <text class="main-text">{{getFrom.text}}\n</text>
+  </view>
+
+  <view class="button-like">
+    <image wx:if="{{!isLike}}" src="/images/07.jpg" style="width: 50px; height: 50px" bindtap="myfavort"></image>
+    <image wx:else src="/images/06 .jpg" style="width: 50px; height: 50px" bindtap="delefavorite"></image>
   </view>
   <!-- 评论区中心对齐标题 -->
   <view class="comment-title">评论区</view>
   
   <!-- 若是最后一个comment-item, 则要有margin-bottom: 100rpx -->
-  <view class="comment-item" wx:for="{{getFroms}}" wx:key="time" style="margin-bottom: 100rpx;">
-    <text class="comment-text">{{item.text}}</text>
+  <view class="comment-item" wx:for="{{getFroms}}" wx:key="time">
+  <text class="comment-text">{{item.text}}</text>
+  <view class="comment-footer">
+    <text class="comment-time">{{item.time}}</text>
     <view wx:if="{{ item.user_id == pasage}}">
-      <button class="delete-button" type="default" plain="true" bindtap="delete" data-flag="{{item.comment_id}}">
+      <button class="delete-button" type="default" bindtap="delete" data-flag="{{item.comment_id}}">
         <text class="delete-button-text">删除</text>
       </button>
     </view>
-    <text class="comment-time">{{item.time}}</text>
   </view>
+  </view>
+  <view style="margin-bottom: 100rpx;"></view>
 
   <view class="njx_card" wx:for="{{list}}" wx:key="{{ items.news_id }}" bindtap="toComment" wx:for-item="items">
     <view class="content-infoL" style="display:flex">{{item.id}}</view>
